@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" type="text/css" href="to-do_list.css">
+</head>
+<body>
+    <script type="text/javascript">
+        var listItems=['buy groceries'];
+    </script>
+    <div class="header">
+        <h2 style="margin:5px">To Do List</h2>
+        <input type="text" id="new_list_item" placeholder="Title...">
+        <button onclick="addItem()">Add Item</button>
+    </div>
+    <script type="text/javascript">
+        function addItem(){
+            var tempItem=document.getElementById("new_list_item").value;
+            listItems.push(tempItem);
+            displayList(tempItem);
+            document.getElementById("new_list_item").value='';
+        }
+    </script>
+    <ul id="display">
+        <script type="text/javascript">
+            listItems.forEach(displayList);
+            function displayList(item){
+                document.getElementById("display").innerHTML+="<li>"+item+"</li>"
+            }
+        </script>
+    </ul>
+    <button type="button" id="clear-list" onclick="removeAll()">Clear Items</button>
+    <script type="text/javascript">
+        function removeAll(){
+            listItems=[''];
+            displayList(listItems);
+        }
+    </script>
+</body>
+</html>
+
